@@ -1,23 +1,26 @@
 'use client';
 import { useState } from 'react';
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createBrowserClient } from '@supabase/ssr';
 import Link from 'next/link';
 
 export default function ResetPassword() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
-  const supabase = createClientComponentClient();
+  
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
 
   const handleReset = async (e: React.FormEvent) => {
     e.preventDefault();
     const { error } = await supabase.auth.resetPasswordForEmail(email);
-    if (error) setMessage(`Error: ${error.message}`);
-    else setMessage('Password reset link sent to your email!');
+    setMessage(error ? `Error: ${error.message}` : 'Password reset link sent to your email!');
   };
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-gray-900 border border-gray-800 rounded-2xl p-6 shadow-2xl">
+      <div className="w-full max-w-md bg-gray-900 border border-gray-800 rounded-2xl p-6">
         <h2 className="text-xl font-bold mb-4">Reset Password</h2>
         {message && <p className="mb-4 text-sm text-yellow-500">{message}</p>}
         <form onSubmit={handleReset} className="space-y-4">
