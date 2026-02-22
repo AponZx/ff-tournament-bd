@@ -1,22 +1,25 @@
 {
   "name": "FF Warzone BD",
   "short_name": "WarzoneBD",
-  "description": "Premium Free Fire Tournament Platform",
+  "description": "Best Free Fire Tournament Platform",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0a0a0a",
   "theme_color": "#eab308",
   "orientation": "portrait",
+  "scope": "/",
   "icons": [
     {
-      "src": "https://img.icons8.com/fluency/192/google-play.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "https://cdn-icons-png.flaticon.com/512/1067/1067357.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     },
     {
-      "src": "https://img.icons8.com/fluency/512/google-play.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "https://cdn-icons-png.flaticon.com/512/1067/1067357.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
