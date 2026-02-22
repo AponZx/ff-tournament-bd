@@ -1,7 +1,45 @@
+'use client';
+import { useEffect, useState } from 'react';
+
 export default function Profile() {
+  const [deferredPrompt, setDeferredPrompt] = useState<any>(null);
+
+  useEffect(() => {
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    });
+  }, []);
+
+  const handleInstall = () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choiceResult: any) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        }
+        setDeferredPrompt(null);
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white p-4 font-sans pt-10">
       <div className="max-w-md mx-auto bg-gray-900 border border-gray-800 rounded-xl p-6">
+        
+        {/* Install App Banner */}
+        {deferredPrompt && (
+          <div className="bg-yellow-500 text-black p-4 rounded-xl mb-6 flex justify-between items-center shadow-lg">
+            <div>
+              <p className="font-black text-lg">INSTALL APP</p>
+              <p className="text-xs font-bold opacity-80">Get notifications for matches!</p>
+            </div>
+            <button onClick={handleInstall} className="bg-black text-yellow-500 px-4 py-2 rounded-lg font-bold text-sm">
+              INSTALL
+            </button>
+          </div>
+        )}
+
         <div className="flex items-center gap-4 mb-8">
           <div className="w-16 h-16 bg-gradient-to-tr from-yellow-500 to-red-500 rounded-full flex items-center justify-center text-2xl font-black text-black">P1</div>
           <div>
