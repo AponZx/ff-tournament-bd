@@ -17,7 +17,7 @@ export default function Home() {
       <div className="p-3">
         <div className="bg-yellow-500 text-white p-3 rounded-lg flex items-center gap-2 text-xs font-bold shadow-sm">
           <span className="bg-white text-yellow-500 rounded-full w-5 h-5 flex items-center justify-center">📢</span>
-          <marquee>টেলিগ্রামে জয়েন করুন এবং এডমিনকে ইনবক্স করে অপেক্ষা করবেন সমস্যার সমাধান পাবেন ইনশাআল্লাহ!</marquee>
+          <div className="flex-1 overflow-hidden" dangerouslySetInnerHTML={{ __html: '<marquee scrollamount="5">টেলিগ্রামে জয়েন করুন এবং এডমিনকে ইনবক্স করে অপেক্ষা করবেন সমস্যার সমাধান পাবেন ইনশাআল্লাহ!</marquee>' }} />
         </div>
       </div>
       <div className="p-3">
