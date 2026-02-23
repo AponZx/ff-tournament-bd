@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main className="w-full min-h-screen bg-gray-50 font-sans">
       
-      {/* 1. Header Area - CLEAN RED */}
+      {/* Header Area - CLEAN RED */}
       <div className="w-full bg-[#d32f2f] text-white py-4 px-6 shadow-md">
         <h1 className="text-2xl font-black italic">
           SUBSCRIBE TO OUR<br/>
@@ -21,19 +21,20 @@ export default function Home() {
         <div className="mt-2 w-10 h-1 bg-white rounded-full"></div>
       </div>
 
-      {/* 2. Notice Board - WHITE CARD */}
-      <div className="p-4 -mt-4">
+      {/* Notice Board - ALIGNED & BOLD TEXT */}
+      <div className="p-4"> 
+        {/* REMOVED -mt-4 to fix alignment */}
         <div className="bg-white rounded-lg shadow-md p-3 flex items-center gap-3 border border-gray-100">
           <div className="bg-orange-100 p-2 rounded-full">
             <span className="text-orange-500 font-bold text-xl">📢</span>
           </div>
-          <div className="flex-1 overflow-hidden text-sm font-medium text-gray-800">
-             <div dangerouslySetInnerHTML={{ __html: '<marquee scrollamount="4">টেলিগ্রামে জয়েন করুন এবং এডমিনকে ইনবক্স করে অপেক্ষা করবেন। Match ID given 10 mins before start.</marquee>' }} />
+          <div className="flex-1 overflow-hidden text-sm font-bold text-gray-800">
+             <div dangerouslySetInnerHTML={{ __html: '<marquee scrollamount="4">টেলিগ্রামে জয়েন করুন এবং এডমিনকে ইনবক্স করে অপেক্ষা করবেন।</marquee>' }} />
           </div>
         </div>
       </div>
 
-      {/* 3. Categories - EXACT REPLICA */}
+      {/* Categories - BOLDER TEXT */}
       <div className="px-4 pb-4">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-lg font-black text-gray-800 uppercase tracking-wide border-l-4 border-gray-800 pl-3">Free Fire Matches</h2>
@@ -42,16 +43,14 @@ export default function Home() {
         <div className="grid grid-cols-2 gap-4">
           {categories.map((cat, i) => (
             <Link href={cat.link} key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200 block active:scale-95 transition-transform group">
-              {/* Image Area */}
               <div className="h-28 bg-gray-200 relative overflow-hidden">
                 <img src={cat.image} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={cat.title} />
                 <span className="absolute top-2 right-2 bg-[#e91e63] text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm">{cat.badge}</span>
               </div>
-              
-              {/* Text Area */}
               <div className="p-3">
                 <h3 className="font-black text-xs text-gray-900 mb-1">{cat.title}</h3>
-                <p className="text-[10px] text-gray-500 font-medium">{cat.desc}</p>
+                <p className="text-[10px] text-gray-600 font-semibold">{cat.desc}</p> 
+                {/* Changed text-gray-500 to 600 and font-medium to semibold */}
               </div>
             </Link>
           ))}
