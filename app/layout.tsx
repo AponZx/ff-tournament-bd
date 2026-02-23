@@ -14,18 +14,21 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   themeColor: '#ffffff',
   width: 'device-width',
-  initialScale: 1, maximumScale: 1, userScalable: false,
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-gray-100 text-gray-900 pb-20`}>
+      <body className={`${inter.className} bg-gray-50 text-gray-900 antialiased`}>
         <InstallGate>
-          <div className="max-w-md mx-auto bg-gray-100 min-h-screen relative shadow-2xl">
+          {/* REMOVED max-w-md to fix black gaps. Now it is FULL WIDTH. */}
+          <div className="min-h-screen w-full bg-gray-50 pb-20">
             {children}
-            <BottomNav />
           </div>
+          <BottomNav />
         </InstallGate>
       </body>
     </html>
